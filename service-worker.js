@@ -17,9 +17,7 @@ self.addEventListener('fetch', event => {
     const newUrl = 'https://fschwieb-2597dad56586.herokuapp.com/prox?url=' + encode( url );
     event.respondWith(fetch(newUrl));
     return;
-  } else {
-    // Let other requests go normally
-    event.respondWith(fetch(event.request));
-    return;
   }
+    // Let other requests go normally
+  event.respondWith(fetch(event.request));
 });
