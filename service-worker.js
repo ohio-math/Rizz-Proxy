@@ -7,6 +7,7 @@ self.addEventListener('fetch', event => {
   const registeredBy = "ohio-math.github.io";
   if (compiled.hostname == registeredBy) {
     event.respondWith(fetch(event.request));
+    return;
   }
   
   const encode = (input) => encodeURIComponent(input);
@@ -15,8 +16,10 @@ self.addEventListener('fetch', event => {
   if (url.startsWith("http")) {
     const newUrl = 'https://fschwieb-2597dad56586.herokuapp.com/prox?url=' + encode( url );
     event.respondWith(fetch(newUrl));
+    return;
   } else {
     // Let other requests go normally
     event.respondWith(fetch(event.request));
+    return;
   }
 });
